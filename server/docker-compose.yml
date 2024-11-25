@@ -1,0 +1,59 @@
+version: "3.7"
+services:
+  requestform:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: request-form
+    container_name: requestform
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./storage:/var/www/storage
+      - ./bootstrap/cache:/var/www/bootstrap/cache
+      - ./:/var/www
+      - requestform_data:/var/lib/mysql
+    networks:
+      - requestform
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3307
+      DB_DATABASE: request_db
+      DB_USERNAME: smct
+      DB_PASSWORD: smct
+
+  mysql:
+    image: mysql:8.0
+    container_name: requestform-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: backend
+      MYSQL_USER: smct
+      MYSQL_PASSWORD: smct
+      MYSQL_ROOT_PASSWORD: smct  
+    volumes:
+      - requestform_data:/var/lib/mysql
+    networks:
+      - requestform
+    ports:
+      - "3307:3306"
+
+  nginx:
+    image: nginx:alpine
+    container_name: requestform-nginx
+    restart: unless-stopped
+    ports:
+      - 8002:8002
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - requestform
+
+networks:
+  requestform:
+    driver: bridge
+
+volumes:
+  requestform_data:  # Named volume for MySQL database

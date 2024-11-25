@@ -15,17 +15,6 @@ services:
     networks:
       - requestform
 
-  php-fpm:
-    image: php:8.2-fpm
-    container_name: php-fpm
-    restart: unless-stopped
-    volumes:
-      - ./storage:/var/www/storage
-      - ./bootstrap/cache:/var/www/bootstrap/cache
-      - ./:/var/www
-    networks:
-      - requestform
-
   mysql:
     image: mysql:8.0
     container_name: request-mysql

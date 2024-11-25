@@ -1,5 +1,5 @@
 services:
-  requestform:
+  request-form:
     build:
       context: ./
       dockerfile: Dockerfile

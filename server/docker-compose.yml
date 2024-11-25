@@ -1,5 +1,5 @@
 services:
-  request-form:
+  request-form1:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -13,11 +13,21 @@ services:
       - ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - requestform
-    expose:
-      - "8002"
-    deploy:
-      replicas: 3
-
+  request-form2:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: requestform
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./storage:/var/www/storage
+      - ./bootstrap/cache:/var/www/bootstrap/cache
+      - ./:/var/www
+      - ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - requestform
+      
   mysql:
     image: mysql:8.0
     container_name: request-mysql

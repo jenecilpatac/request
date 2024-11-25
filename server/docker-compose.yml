@@ -14,13 +14,6 @@ services:
       - requestform_data:/var/lib/mysql
     networks:
       - requestform
-    environment:
-      DB_CONNECTION: mysql
-      DB_HOST: mysql
-      DB_PORT: 3306
-      DB_DATABASE: request_db
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
 
   mysql:
     image: mysql:8.0

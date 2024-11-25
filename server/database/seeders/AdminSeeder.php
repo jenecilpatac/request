@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -14,8 +15,8 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $admin = [
-            ['firstName' => 'Accounting Clerk', 
-            'lastName' => 'Accounting Clerk', 
+            ['firstName' => 'Request', 
+            'lastName' => 'Admin', 
             'contact' => '09123456789',
             'branch_code' => 'HO',
             'branch' => 'HO',
@@ -23,7 +24,7 @@ class AdminSeeder extends Seeder
             'employee_id' => '123456',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => '123456',
+            'password' => Hash::make('123456'),  
             'position' => 'Admin',
             'signature' => 'none',
             'role' => 'Admin',

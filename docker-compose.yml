@@ -93,7 +93,7 @@ services:
     container_name: requestform-mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: backend
+      MYSQL_DATABASE: request_db
       MYSQL_USER: smct
       MYSQL_PASSWORD: smct
       MYSQL_ROOT_PASSWORD: smct  

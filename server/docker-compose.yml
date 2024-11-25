@@ -1,6 +1,6 @@
   requestform:
     build:
-      context: .
+      context: ./
       dockerfile: Dockerfile
     image: request-form
     container_name: requestform

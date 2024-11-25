@@ -104,6 +104,19 @@ services:
     ports:
       - "3307:3306"
 
+  request-phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: request-phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8080:80  # Expose phpMyAdmin on port 8080
+    environment:
+      PMA_HOST: mysql  # Use 'mysql' as the service name
+      PMA_USER: smct
+      PMA_PASSWORD: smct
+    networks:
+      - requestform
+
   nginx:
     image: nginx:alpine
     container_name: requestform-nginx

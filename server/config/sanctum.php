@@ -17,7 +17,7 @@ return [
 
     'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', sprintf(
         '%s%s',
-        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,136.239.196.178:5001,localhost:5001,::1,185.199.52.40:7000,localhost:7000,185.199.52.40:8001,localhost:8001,10.10.2.194:8001,localhost:8001,',
+        'localhost,localhost:3000,127.0.0.1,127.0.0.1:8000,136.239.196.178:5001,localhost:5001,::1,185.199.52.40:7000,localhost:7000,185.199.52.40:8001,localhost:8001,10.10.2.194:8001,localhost:8001,https://request.hondades.com/',
         Sanctum::currentApplicationUrlWithPort()
     ))),
 

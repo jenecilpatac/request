@@ -1,3 +1,4 @@
+services:
   requestform:
     build:
       context: ./
@@ -61,3 +62,10 @@
       - ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - requestform
+
+volumes:
+    requestform_data:  
+
+networks:
+  requestform:
+    driver: bridge

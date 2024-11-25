@@ -1,69 +1,16 @@
+
 services:
-  request-react1:
-    container_name: request-react1
+  request-react:
+    container_name: request-react
     restart: unless-stopped
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8011:8001"
+      - "8001:8001"
     volumes:
       - .:/app
       - /app/node_modules
       - ./src:/app/src 
     stdin_open: true
     tty: true
-    networks:
-      - react-network
-
-  request-react2:
-    container_name: request-react2
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8012:8001"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - ./src:/app/src 
-    stdin_open: true
-    tty: true
-    networks:
-      - react-network
-
-  request-react3:
-    container_name: request-react3
-    restart: unless-stopped
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8013:8001"
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - ./src:/app/src 
-    stdin_open: true
-    tty: true
-    networks:
-      - react-network
-
-  react-nginx:  
-    image: nginx:alpine 
-    container_name: request-nginx
-    restart: unless-stopped    
-    ports:                      
-      - 8001:8001
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - ./src:/app/src 
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - react-network
-
-networks:
-  react-network:
-    driver: bridge

@@ -28,7 +28,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     ports:
-      - "3307:3306" 
+      - "3306:3306" 
     volumes:
       - requestform_data:/var/lib/mysql
     networks:

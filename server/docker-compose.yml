@@ -17,7 +17,7 @@ services:
     environment:
       DB_CONNECTION: mysql
       DB_HOST: mysql
-      DB_PORT: 3307
+      DB_PORT: 3306
       DB_DATABASE: request_db
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
@@ -35,7 +35,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     ports:
-      - "3307:3306" 
+      - "3306:3306" 
     volumes:
       - requestform_data:/var/lib/mysql
     networks:

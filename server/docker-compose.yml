@@ -1,10 +1,9 @@
 services:
-  request-form:
+  requestform:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: request-form
-    container_name: request-form
+    image: requestform
     restart: unless-stopped
     working_dir: /var/www/
     volumes:

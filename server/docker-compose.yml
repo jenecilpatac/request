@@ -11,7 +11,6 @@ services:
       - ./storage:/var/www/storage
       - ./bootstrap/cache:/var/www/bootstrap/cache
       - ./:/var/www
-      - requestform_data:/var/lib/mysql
     networks:
       - requestform
 

@@ -28,7 +28,7 @@ services:
     volumes:
       - ../client:/app
       - /app/node_modules
-      - ..client/src:/app/src 
+      - ../client/src:/app/src 
     stdin_open: true
     tty: true
     networks:

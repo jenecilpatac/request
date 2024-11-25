@@ -17,6 +17,16 @@ services:
       - "8002"
     deploy:
       replicas: 3
+  
+  request-php-fpm:
+  image: php:8.2-fpm
+  container_name: request-php-fpm
+  restart: unless-stopped
+  volumes:
+    - ./:/var/www
+  networks:
+    - requestform
+
 
   mysql:
     image: mysql:8.0

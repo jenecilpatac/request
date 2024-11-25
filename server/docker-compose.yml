@@ -17,7 +17,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: request-server
+    container_name: request-mysql
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: request_db

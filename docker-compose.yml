@@ -4,14 +4,14 @@ services:
     container_name: request-react1
     restart: unless-stopped
     build:
-      context: ../client
+      context: ./client
       dockerfile: Dockerfile
     ports:
       - "8011:8001"
     volumes:
-      - ../client:/app
+      - ./client:/app
       - /app/node_modules
-      - ../client/src:/app/src 
+      - ./client/src:/app/src 
     stdin_open: true
     tty: true
     networks:
@@ -21,14 +21,14 @@ services:
     container_name: request-react2
     restart: unless-stopped
     build:
-      context: ../client
+      context: ./client
       dockerfile: Dockerfile
     ports:
       - "8012:8001"
     volumes:
-      - ../client:/app
+      - ./client:/app
       - /app/node_modules
-      - ..client/src:/app/src 
+      - ./client/src:/app/src 
     stdin_open: true
     tty: true
     networks:
@@ -38,14 +38,14 @@ services:
     container_name: request-react3
     restart: unless-stopped
     build:
-      context: ../client
+      context: ./client
       dockerfile: Dockerfile
     ports:
       - "8013:8001"
     volumes:
-      - ../client:/app
+      - ./client:/app
       - /app/node_modules
-      - ../client/src:/app/src 
+      - ./client/src:/app/src 
     stdin_open: true
     tty: true
     networks:
@@ -58,25 +58,25 @@ services:
     ports:                      
       - 8001:8001
     volumes:
-      - ../client:/app
+      - ./client:/app
       - /app/node_modules
-      - ..client//src:/app/src 
-      - ../client/nginx.conf:/etc/nginx/nginx.conf
+      - .client//src:/app/src 
+      - ./client/nginx.conf:/etc/nginx/nginx.conf
     networks:
       - react-network
   
   requestform:
     build:
-      context: ../server
+      context: ./server
       dockerfile: Dockerfile
     image: request-form
     container_name: requestform
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
-      - ../server/storage:/var/www/storage
-      - ../server/bootstrap/cache:/var/www/bootstrap/cache
-      - ../server/:/var/www
+      - ./server/storage:/var/www/storage
+      - ./server/bootstrap/cache:/var/www/bootstrap/cache
+      - ./server/:/var/www
       - requestform_data:/var/lib/mysql
     networks:
       - requestform
@@ -111,8 +111,8 @@ services:
     ports:
       - 8002:8002
     volumes:
-      - ../server/:/var/www
-      - ../server/docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./server/:/var/www
+      - ./server/docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - requestform
   

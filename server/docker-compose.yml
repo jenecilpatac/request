@@ -1,10 +1,10 @@
 services:
-  request-form:
+  requestform:
     build:
       context: ./
       dockerfile: Dockerfile
     image: requestform
-    container_name: request-form
+    container_name: requestform
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
@@ -55,7 +55,7 @@ services:
 
   nginx:
     image: nginx:alpine
-    container_name: requestform-nginx
+    container_name: request-nginx
     restart: unless-stopped
     ports:
       - 8002:8002

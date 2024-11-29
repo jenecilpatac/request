@@ -16,8 +16,14 @@ services:
       - requestform
     expose:
       - 8002
+
+  php-fpm:
+    image: php:8-fpm
     deploy:
       replicas: 3
+    networks:
+      - requestform
+
 
   mysql:
     image: mysql:8.0

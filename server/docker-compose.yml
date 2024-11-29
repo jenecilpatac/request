@@ -23,6 +23,11 @@ services:
       replicas: 3
     networks:
       - requestform
+    volumes:
+      - ./storage:/var/www/storage
+      - ./bootstrap/cache:/var/www/bootstrap/cache
+      - ./:/var/www
+      - ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
 
 
   mysql:

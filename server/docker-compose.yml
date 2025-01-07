@@ -22,30 +22,8 @@ services:
       DB_DATABASE: request_sample
       DB_USERNAME: smct
       DB_PASSWORD: smct 
-
-  load-request2:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: requestform
-    container_name: load-request2
-    restart: unless-stopped
-    working_dir: /var/www/
-    volumes:
-      - ./storage:/var/www/storage
-      - ./bootstrap/cache:/var/www/bootstrap/cache
-      - ./:/var/www
-      #- ./docker-compose/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      #- ./nginx.conf:/etc/nginx/nginx.conf
-    networks:
-      - load-requestform
-    environment:
-      DB_CONNECTION: mysql
-      DB_HOST: 172.17.0.1  # Replace with your host's IP if necessary
-      DB_PORT: 3306
-      DB_DATABASE: request_sample
-      DB_USERNAME: smct
-      DB_PASSWORD: smct 
+    deploy:
+      replicas: 3
 
   load-nginx:
     image: nginx:alpine
